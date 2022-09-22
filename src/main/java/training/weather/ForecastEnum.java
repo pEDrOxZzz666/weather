@@ -32,26 +32,24 @@ public enum ForecastEnum {
     THUNDERSTORM_WITH_SLIGHT_HAIL(96, "Thunderstorm with slight hail"),
     THUNDERSTORM_WITH_HEAVY_HAIL(99, "Thunderstorm with heavy hail");
 
-    private final int code;
-
-    private final String description;
-
-    private static final HashMap<Integer, ForecastEnum> lookup;
+    private int weatherCode;
+    private String description;
+    private static final HashMap<Integer, ForecastEnum> WEATHER_DESCRIPTION;
 
     static {
-        lookup = new HashMap<>();
+        WEATHER_DESCRIPTION = new HashMap<>();
         for (ForecastEnum e : ForecastEnum.values()) {
-            lookup.put(e.code, e);
+            WEATHER_DESCRIPTION.put(e.weatherCode, e);
         }
     }
 
     ForecastEnum(int code, String description) {
-        this.code = code;
+        this.weatherCode = code;
         this.description = description;
     }
 
     public static ForecastEnum getEnumByCode(int code) {
-        return lookup.get(code);
+        return WEATHER_DESCRIPTION.get(code);
     }
 
     public String getDescription() {
