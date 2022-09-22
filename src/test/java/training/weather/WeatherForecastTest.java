@@ -5,13 +5,16 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class WeatherForecastTest {
 
 	@Test
 	public void unfinished_test() throws IOException {
-		WeatherForecast weatherForecast = new WeatherForecast();
-		String forecast = weatherForecast.getCityWeather("Madrid", new Date());
+		//WeatherForecast weatherForecast = new WeatherForecast();
+		String forecast = WeatherForecast.getCityWeather("Berlin", new Date());
 		System.out.println(forecast);
+		
+		//assertEquals(forecast,"");
 	}
 }
