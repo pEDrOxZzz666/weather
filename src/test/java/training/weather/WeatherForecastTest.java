@@ -10,8 +10,7 @@ import static org.junit.Assert.*;
 public class WeatherForecastTest {
 
 	@Test
-	public void unfinished_test() throws IOException {
-		//WeatherForecast weatherForecast = new WeatherForecast();
+	public void unfinished_test() throws IOException {		
 		String forecast = WeatherForecast.getCityWeather("Berlin", new Date());
 		System.out.println(forecast);
 		
