@@ -2,6 +2,11 @@ package training.weather;
 
 import java.util.HashMap;
 
+/**
+ * 
+ * @author Arteco
+ * ENUM containing the time and its code	
+ */
 public enum ForecastEnum {
     CLEAR_SKY(0, "Clear sky"),
     MAINLY_CLEAR(1, "Mainly clear"),
@@ -36,6 +41,7 @@ public enum ForecastEnum {
     private String description;
     private static final HashMap<Integer, ForecastEnum> WEATHER_DESCRIPTION;
 
+    // Enter the ENUM data in a HashMap
     static {
         WEATHER_DESCRIPTION = new HashMap<>();
         for (ForecastEnum e : ForecastEnum.values()) {
@@ -43,15 +49,29 @@ public enum ForecastEnum {
         }
     }
 
+    /**
+     * Constructor
+     * @param code int Integer type parameter that contains the code of each climate
+     * @param description String type parameter that contains the description of the weather.
+     */
     ForecastEnum(int code, String description) {
         this.weatherCode = code;
         this.description = description;
     }
 
+    /**
+     * Function that returns an object of type ForecastEnum
+     * @param code Integer type parameter that represents the weather code.
+     * @return Returns an object of type ForecastEnum
+     */
     public static ForecastEnum getEnumByCode(int code) {
         return WEATHER_DESCRIPTION.get(code);
     }
 
+    /**
+     * Function that returns the description of the weather.
+     * @return Return weather description
+     */
     public String getDescription() {
         return description;
     }
