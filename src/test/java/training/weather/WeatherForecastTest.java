@@ -24,6 +24,7 @@ public class WeatherForecastTest {
 		LocalTime local = LocalTime.now();
 		System.out.println(local);
 		
+		
 		System.out.println(LocalDate.now());
 		
 		
