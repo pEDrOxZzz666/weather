@@ -13,11 +13,14 @@ import org.json.JSONException;
 
 public class WeatherForecast {
 	
+	private static final String LONGITTUDE_FIELD = "longt";
+	private static final String LATITUDE_FIELD = "latt";
 	// CONSTANTS
-	private static final String WEATHERCODE_FIELD = "weathercode";
-	private static final String TIME_FIElD = "time";	
+	private static final String WEATHER_CODE_FIELD = "weathercode";
+	private static final String TIME_FIELD = "time";	
 	private static final String DATE_FORMAT = "yyyy-MM-dd";	
 	private static final Date NEW_DATETIME = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 6);	
+	private static final String API_KEY = "113725055223685e15811337x25633";
 	
 
 	/**
@@ -34,23 +37,17 @@ public class WeatherForecast {
 		
 		if (checkDateBeforeParameter(datetimeCheck, NEW_DATETIME)) {						
 			try {
-				httpRequestResult = getHttpRequest("https://geocode.xyz/" + city + "?json=1");
-				
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {					
-					e.printStackTrace();
-				}
+				httpRequestResult = getHttpRequest("https://geocode.xyz/" + city + "?json=1&auth=/" + API_KEY + "/");			
 								
 				CityCoordinates cityCoordinates = new CityCoordinates(
-						"latt", "longt", httpRequestResult	);				
+						LATITUDE_FIELD, LONGITTUDE_FIELD, httpRequestResult	);				
 				
 				httpRequestResult = getHttpRequest(
 						"https://api.open-meteo.com/v1/forecast?latitude=" + cityCoordinates.getLatitude() 
 						+ "&longitude=" + cityCoordinates.getLongitude() 
 						+ "&daily=weathercode&current_weather=true&timezone=Europe%2FBerlin");				
 				
-				DailyWeather dailyWeather = new DailyWeather(httpRequestResult, TIME_FIElD, WEATHERCODE_FIELD);			
+				DailyWeather dailyWeather = new DailyWeather(httpRequestResult, TIME_FIELD, WEATHER_CODE_FIELD);			
 				
 				return getDescriptionWeather(dailyWeather.getDailyResult(), dailyWeather.getWeatherCode(), datetimeCheck);				
 				
