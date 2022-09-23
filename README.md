@@ -44,29 +44,29 @@ La solución debería contener un fichero README donde se respondan estas pregun
    	4.2. DailyWeather --> Extrae los datos de los campos "weathercode" y "time". Puede devolver objetos JSONArray.
 
  	
-- ¿Qué problemas te has encontrado al implementar los tests y cómo los has solventado?
+- ¿Qué problemas te has encontrado al implementar los tests y cómo los has solventado?.
   A parte de probar el método principal de la clase WeatherForecast (getCityWeather) quería probar los métodos mencionados en la primera pregunta. He cambiado al     atributo de acceso private por protected para poder acceder a ellos desde la clase de test.
   NOTA: He cambiado la versión de Junit 4 por la 5.
 
 
-- ¿Qué componentes has creado y por qué?
+- ¿Qué componentes has creado y por qué?.
 
-- Si has utilizado dependencias externas, ¿por qué has escogido esas dependencias?
+- Si has utilizado dependencias externas, ¿por qué has escogido esas dependencias?.
   He utilizado Junit5. El motivo es que principalmente he trabajado más con esa versión. También puede aprovechar características de Java8 o posterior, como funciones   lambda, usar más de una extensión a la vez, etc.
 
-- ¿Has utilizado  streams, lambdas y optionals de Java 8? ¿Qué te parece la programación funcional?
+- ¿Has utilizado  streams, lambdas y optionals de Java 8? ¿Qué te parece la programación funcional?.
   Sólo he utilizado lambdas en la clase de test, debido a que en Junit 5, los test que evaluan el lanzamiento de excepciones se realizan de esta manera. 
 
-- ¿Qué piensas del rendimiento de la aplicación? 
+- ¿Qué piensas del rendimiento de la aplicación?. 
   El rendimiento no es demasiado bueno, por lo menos en según que ejecuciones. Depende también de la respuesta por parte de la API.
 
 - ¿Qué harías para mejorar el rendimiento si esta aplicación fuera a recibir al menos 100 peticiones por segundo?
   Haría uso de hilos, por ejemplo con la Clase Thread.
 
-- ¿Cuánto tiempo has invertido para implementar la solución? 
+- ¿Cuánto tiempo has invertido para implementar la solución?. 
   Entre 6.5 y 7 horas. He dedicado entre 2 y 3 horas después de mi jornada laboral durante 3 días.
 
-- ¿Crees que en un escenario real valdría la pena dedicar tiempo a realizar esta refactorización?
+- ¿Crees que en un escenario real valdría la pena dedicar tiempo a realizar esta refactorización?.
   Por supuesto. Envita errores y simplifica la lectura del código. 
 
 # A tener en cuenta
