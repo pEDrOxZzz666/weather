@@ -32,7 +32,7 @@ public class WeatherForecast {
 	private static final Date NEW_DATETIME = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 6);	
 	private static final String API_KEY = "113725055223685e15811337x25633";
 	
-
+			
 	/**
 	 * Function that obtains the weather of a city on a given date
 	 * @param city String type parameter that refers to the city.
