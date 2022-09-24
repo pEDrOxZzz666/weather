@@ -17,6 +17,8 @@ import org.junit.jupiter.api.Test;
 
 public class WeatherForecastTest {
 	
+	private static final Date NEW_DATETIME = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 6);	
+	
 	
 	@BeforeAll
 	static void setUpBeforeClass() {
@@ -90,7 +92,7 @@ public class WeatherForecastTest {
 		System.out.println("*************  TEST Check_Date_Before_Parameter");		
 		boolean dateAfter = WeatherForecast.checkDateBeforeParameter(new Date(), new Date(122, 8, 22));
 		assertFalse(dateAfter);		
-		boolean dateBefore = WeatherForecast.checkDateBeforeParameter(new Date(), new Date(122, 8, 24));
+		boolean dateBefore = WeatherForecast.checkDateBeforeParameter(new Date(), NEW_DATETIME);
 		assertTrue(dateBefore);
 	}
 	
