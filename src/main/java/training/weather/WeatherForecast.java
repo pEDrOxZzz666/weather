@@ -18,6 +18,11 @@ import org.json.JSONArray;
  */
 public class WeatherForecast {
 	
+	public static void main (String[] args) throws IOException  {
+		String forecast = getCityWeather("",null);
+		System.out.println(forecast);
+	}
+	
 	// CONSTANTS
 	private static final String URL_GEOCODE = "https://geocode.xyz/";
 	private static final String GEOCODE_URL_PARAMS = "?json=1&auth=";	
@@ -40,20 +45,24 @@ public class WeatherForecast {
 	 * @return Returns a text string with the time in the city passed by parameter.
 	 * @throws IOException Can throw exceptions of type IOException.
 	 */
-	public static String getCityWeather(String city, Date datetime) throws IOException {
+	public static String getCityWeather(String city, Date datetime) throws IOException  {
 		final Date datetimeCheck = checkDatetimeIsNull(datetime);	
 		String httpRequestResult;
 		if (checkDateBeforeParameter(datetimeCheck, NEW_DATETIME)) {			
-			httpRequestResult = 
-					getHttpRequest(URL_GEOCODE + city + GEOCODE_URL_PARAMS + API_KEY);			
-			CityCoordinates cityCoordinates = 
-					new CityCoordinates(LATITUDE_FIELD, LONGITTUDE_FIELD, httpRequestResult);			
-			httpRequestResult = 
-					getHttpRequest(OPEN_METEO_URL + cityCoordinates.getLatitude() 
-					+ OPEN_METEO_LONGITUDE_PARAM + cityCoordinates.getLongitude() 
-					+ OPEN_METEO_URL_PARAMS + city);			
-			DailyWeather dailyWeather = new DailyWeather(httpRequestResult, TIME_FIELD, WEATHER_CODE_FIELD);			
-			return getDescriptionWeather(dailyWeather.getDailyResult(), dailyWeather.getWeatherCode(), datetimeCheck);
+			//try {
+				httpRequestResult = 
+						getHttpRequest(URL_GEOCODE + city + GEOCODE_URL_PARAMS + API_KEY);			
+				CityCoordinates cityCoordinates = 
+						new CityCoordinates(LATITUDE_FIELD, LONGITTUDE_FIELD, httpRequestResult);			
+				httpRequestResult = 
+						getHttpRequest(OPEN_METEO_URL + cityCoordinates.getLatitude() 
+						+ OPEN_METEO_LONGITUDE_PARAM + cityCoordinates.getLongitude() 
+						+ OPEN_METEO_URL_PARAMS + city);			
+				DailyWeather dailyWeather = new DailyWeather(httpRequestResult, TIME_FIELD, WEATHER_CODE_FIELD);			
+				return getDescriptionWeather(dailyWeather.getDailyResult(), dailyWeather.getWeatherCode(), datetimeCheck);
+			/*} catch (Exception e) {
+				return e.getMessage();
+			}*/
 		}
 		return "";
 	}
@@ -89,7 +98,7 @@ public class WeatherForecast {
 	 * @return Return a String
 	 * @throws IOException You can throw exceptions of type IOException.
 	 */
-	protected static String getHttpRequest (String url) throws IOException  {				
+	protected static String getHttpRequest (String url) throws IOException  {
 		HttpRequestFactory httpRequestFactory = new NetHttpTransport().createRequestFactory();
 		HttpRequest httpRequest = httpRequestFactory.buildGetRequest(new GenericUrl(url));
 		String httpRequestResultToString = httpRequest.execute().parseAsString();		

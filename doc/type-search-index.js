@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"training.weather","l":"CityCoordinates"},{"p":"training.weather","l":"DailyWeather"},{"p":"training.weather","l":"ForecastEnum"},{"p":"training.weather","l":"WeatherForecast"},{"p":"training.weather","l":"WeatherForecastTest"}];updateSearchResults();
